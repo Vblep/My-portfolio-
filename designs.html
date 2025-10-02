@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Designs - VI-HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #0d0d0d;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: #1a1a1a;
+        }
+
+        /* Animated Logo */
+        header h1 {
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #00ffe7, #ff00ff, #00ffe7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300%;
+            animation: glow 5s linear infinite;
+        }
+        @keyframes glow {
+            0% { background-position: 0%; }
+            50% { background-position: 100%; }
+            100% { background-position: 0%; }
+        }
+
+        /* Navbar */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00ffe7;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+        }
+
+        nav.mobile {
+            position: absolute;
+            top: 70px;
+            right: 8%;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,255,231,0.2);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        nav.mobile.show {
+            max-height: 400px;
+        }
+        nav.mobile ul {
+            display: flex;
+            flex-direction: column;
+        }
+        nav.mobile ul li {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        nav.mobile ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Back Button */
+        .nav-back {
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .nav-back:hover {
+            color: #00ffe7;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 8%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .highlight {
+            color: #00ffe7;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .section p {
+            color: #aaa;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* Design Cards */
+        .design-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .design-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .design-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+        }
+        .design-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .design-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 10px;
+            color: #fff;
+        }
+        .design-card p {
+            font-size: 0.95rem;
+            color: #cfcfcf;
+            margin-bottom: 15px;
+        }
+
+        /* "And Lots More" Indicator */
+        .more-designs {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+        .more-designs::after {
+            content: "......and lots more";
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            .container {
+                margin-top: 80px;
+                padding: 0 5%;
+            }
+            .section h2 {
+                font-size: 2rem;
+            }
+            .design-card img {
+                height: 150px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="nav-back">&lt;</a>
+        <h1>VI-HUB</h1>
+        <nav class="desktop">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="designs.html">Graphic Designs</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="mobile" id="mobileMenu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="designs.html">Graphic Designs</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>OUR <span class="highlight">GRAPHIC DESIGNS</span></h2>
+            <p>Explore a selection of stunning graphic designs created by EJEZIE CHIDIEBUBE VICTOR at VI-HUB. From logos to posters, each design reflects creativity and precision.</p>
+
+            <div class="design-grid">
+                <div class="design-card">
+                    <img src="https://i.postimg.cc/3R8XkyLg/mella-logo.png">
+                    <h2>Corporate Logo</h2>
+                    <p>A sleek and modern logo designed for a tech startup, featuring bold typography and vibrant gradients.</p>
+                </div>
+                <div class="design-card">
+                    <img src="https://i.postimg.cc/dV9DL5zV/IMG-20250926-WA0287.jpg" alt="Poster Design">
+                    <h2>Event Poster</h2>
+                    <p>A vibrant poster for a summer school, blending abstract shapes with eye-catching color schemes.</p>
+                </div>
+                <div class="design-card">
+                    <img src="https://i.postimg.cc/7PNRt0vd/Screenshot-2025-09-27-10-21-53-264-com-facebook-katana.jpg">
+                    <h2>Branding Kit</h2>
+                    <p>A complete branding package including business cards, letterheads, and social media assets.</p>
+                </div>
+                <div class="design-card">
+                    <img src="https://i.postimg.cc/BQsZWxVX/Screenshot-2025-10-01-16-54-28-438-com-whatsapp.jpg" alt="Social Media Graphic">
+                    <h2>Social Media Banner</h2>
+                    <p>A dynamic banner designed to boost engagement on social media platforms with a futuristic theme.</p>
+                </div>
+                <div class="design-card">
+                    <img src="https://i.postimg.cc/X72LMgYC/IMG-20251001-WA0029.jpg" alt="Flyer Design">
+                    <h2>Promotional Flyer</h2>
+                    <p>A clean and professional flyer for a product launch, optimized for print and digital use.</p>
+                </div>
+            </div>
+
+            <div class="more-designs"></div>
+        </section>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

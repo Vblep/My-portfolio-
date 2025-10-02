@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - VI-HUB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex; align-items: center;
+      padding: 20px 8%;
+    }
+    header h1 {
+      flex: 1;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg,#00ffe7,#ff00ff,#00ffe7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300%;
+      animation: glow 5s linear infinite;
+    }
+    @keyframes glow {
+      0%{background-position:0%;}
+      50%{background-position:100%;}
+      100%{background-position:0%;}
+    }
+
+    .back-btn {
+      font-size: 1.8rem;
+      color: #00ffe7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      color: #00cccc;
+    }
+
+    .section {
+      padding: 80px 10%;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .highlight {
+      color:#00ffe7;
+    }
+    .section p {
+      color:#aaa;
+      margin-bottom:40px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display:flex;
+      flex-direction: column;
+      gap:20px;
+      background:#1a1a1a;
+      padding:30px;
+      border-radius:10px;
+      box-shadow: 0 0 20px rgba(0,255,231,0.2);
+    }
+    form input, form textarea {
+      padding:12px;
+      border:none;
+      border-radius:5px;
+      background:#111;
+      color:#fff;
+      font-size:1rem;
+    }
+    form textarea {
+      resize:none;
+      height:150px;
+    }
+    form button {
+      background:#00ffe7;
+      color:#000;
+      border:none;
+      padding:12px;
+      font-size:1rem;
+      font-weight:600;
+      border-radius:5px;
+      cursor:pointer;
+      transition:.3s;
+    }
+    form button:hover {
+      background:#00cccc;
+    }
+
+    .contact-grid {
+      margin-top:50px;
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+    .card {
+      background:#1a1a1a;
+      padding:25px;
+      border-radius:10px;
+      box-shadow:0 0 20px rgba(0,255,231,0.2);
+      min-width:200px;
+      flex:1;
+      transition:.3s;
+    }
+    .card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 0 40px rgba(0,255,231,0.4);
+    }
+    .card h3 {
+      color:#00ffe7;
+      margin-bottom:8px;
+    }
+    .card p {
+      color:#bbb;
+    }
+
+    .download-btn {
+      display:inline-block;
+      margin-top:40px;
+      padding:12px 25px;
+      background:#00ffe7;
+      color:#000;
+      border-radius:5px;
+      font-weight:600;
+      text-decoration:none;
+      transition:.3s;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background:#00cccc;
+    }
+
+    footer {
+      margin-top:80px;
+      text-align:center;
+      padding:30px;
+      font-size:0.8rem;
+      color:#555;
+    }
+
+    /* CV Section */
+    .cv-section {
+      display: none;
+      margin-top: 40px;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,255,231,0.2);
+    }
+    .cv-section.visible {
+      display: block;
+    }
+    .cv-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      color: #000;
+      font-size: 14px;
+      line-height: 1.4;
+      padding: 20px;
+      position: relative;
+      border: 1px dashed #000000;
+      opacity: 0.9;
+    }
+    .cv-header {
+      color: #FF0000;
+      text-align: center;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+    .cv-header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .cv-header h2 {
+      margin: 5px 0 0;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    .cv-contact {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #000000;
+    }
+    .photo-box {
+      width: 200px;
+      height: 260px;
+      border: 1px dashed #000000;
+      overflow: hidden;
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cv-content {
+      padding-top: 220px;
+    }
+    .cv-section .section {
+      margin-bottom: 15px;
+    }
+    .cv-section .section h2 {
+      color: #FF0000;
+      font-size: 16px;
+      border-bottom: 1px solid #FF0000;
+      margin-bottom: 5px;
+    }
+    .cv-section .section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+    .cv-section .section ul li {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+    .cv-section .section p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #000000;
+    }
+
+    /* Floating WhatsApp Icon */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+    .whatsapp-float img {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="back-btn">&lt;</a>
+    <h1>VI-HUB</h1>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <h2>Get In <span class="highlight">Touch</span></h2>
+    <p>We’d love to hear from you! Send us a message or download my CV.</p>
+
+    <!-- Form (Formspree Integration) -->
+    <form action="https://formspree.io/f/movkwado" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Thank you for reaching out!" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Contact Cards -->
+    <div class="contact-grid">
+      <div class="card">
+        <h3>Email</h3>
+        <p>ebuvick0@gmail.com</p>
+      </div>
+      <div class="card">
+        <h3>Phone</h3>
+        <p>+234 9119012234</p>
+      </div>
+      <div class="card">
+        <h3>Location</h3>
+        <p>Owerri, Imo State, Nigeria</p>
+      </div>
+    </div>
+
+    <!-- Download CV Button -->
+    <a href="#" class="download-btn" onclick="downloadCV(event)">Download CV</a>
+
+    <!-- Toggle CV Button -->
+    <button onclick="toggleCV()" style="margin-top: 20px; background: #00ffe7; color: #000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s;">
+      View CV
+    </button>
+
+    <!-- CV Section -->
+    <div class="cv-section" id="cvSection">
+      <div class="cv-container">
+        <div class="header">
+          <h1>CURRICULUM VITAE</h1>
+          <h2>EJEZIE CHIDIEBUBE VICTOR</h2>
+        </div>
+        <div class="contact">
+          <p>+234 9119012234 | ebuvick0@gmail.com</p>
+        </div>
+        <div class="photo-box">
+          <img src="Passport.jpg" alt="Passport Photo" id="passportPhoto" onerror="this.style.display='none';">
+        </div>
+        <div class="cv-content">
+          <div class="section">
+            <h2>Career Objective</h2>
+            <p>I'm a seasoned web developer with a passion for building fast, scalable, and secure web applications. With a strong background in graphic design, I bring a unique perspective to my work.</p>
+          </div>
+
+          <div class="section">
+            <h2>Summary of Skills</h2>
+            <ul>
+              <li>Good Judgment</li>
+              <li>Caring and Nurturing</li>
+              <li>Accepting Personal Responsibility</li>
+              <li>Friendly and Polite in all Situations</li>
+              <li>Problem Solving and Conflict Resolution</li>
+              <li>Willingness to Work Holiday</li>
+            </ul>
+            <ul>
+              <li>Dependable and Hardworking</li>
+              <li>Excellent Communication Skills</li>
+              <li>Ability to Handle Pressure and Stressful Situations</li>
+              <li>Professional Appearance</li>
+              <li>Computer Literacy</li>
+              <li>Bilingual Fluency and Good Command of English</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h2>Personal Information</h2>
+            <p>Gender: Male</p>
+            <p>Status: Single</p>
+            <p>Nationality: Nigeria</p>
+            <p>Visa Status: None</p>
+            <p>Language: Fluent in English</p>
+          </div>
+
+          <div class="section">
+            <h2>Educational Background</h2>
+            <ul>
+              <li>Obidient Nursery and Primary School (Primary School Certificate of Education)</li>
+              <li>The Good Shepherd Missionary School (Senior School Certificate of Education)</li>
+              <li>Federal Polytechnic, Nekede (National Diploma in Computer Science)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>DESIGN BY VI-HUB</p>
+  </footer>
+
+  <!-- Floating WhatsApp Icon -->
+  <a href="whatsapp://send?phone=+2349119012234" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    function downloadCV(event) {
+      event.preventDefault();
+      const element = document.querySelector('#cvSection .cv-container');
+      html2pdf().from(element).save('CV_Ejezie_Chidiebube_Victor.pdf');
+    }
+
+    function toggleCV() {
+      const cvSection = document.getElementById('cvSection');
+      cvSection.classList.toggle('visible');
+    }
+  </script>
+</body>
+</html>
